@@ -1,5 +1,11 @@
 <div class="container">
-  <button class="book-meeting-button">Book Meeting</button>
+  <button class="book-meeting-button" (click)="openMeetingDialog()">
+    Book Meeting
+  </button>
+  <app-create-meeting-dialog
+    *ngIf="showMeetingDialog"
+    (close)="closeMeetingDialog()"
+  ></app-create-meeting-dialog>
   <app-upcoming-meetings></app-upcoming-meetings>
   <app-meeting-room-details></app-meeting-room-details>
 </div>
