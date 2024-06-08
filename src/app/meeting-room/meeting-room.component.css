@@ -1,0 +1,13 @@
+.container {
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-meeting-button {
+  background: #1d72e8;
+  color: white;
+  width: 150px;
+  border: none;
+  padding: 10px;
+}
