@@ -10,7 +10,6 @@ import { DatePipe, NgFor } from "@angular/common";
   styleUrl: "./upcoming-meetings.component.css",
 })
 export class UpcomingMeetingsComponent {
-  // constructor(private date: DatePipe) {}
   upcomingMeetings: Array<Meeting> = [
     {
       userName: "demo",
