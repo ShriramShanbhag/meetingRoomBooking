@@ -1,0 +1,25 @@
+<div class="upcoming-meetings-box">
+  <h3 style="padding: 0px 10px">Your upcoming meetings</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Sr No</th>
+        <th>Username</th>
+        <th>Agenda</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Room</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let meeting of upcomingMeetings; index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ meeting.userName }}</td>
+        <td>{{ meeting.agenda }}</td>
+        <td>{{ meeting.datetime | date : "DD-MM-YYYY" }}</td>
+        <td>{{ meeting.datetime | date : "HH:mm" }}</td>
+        <td>{{ meeting.roomid }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
