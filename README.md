@@ -1,6 +1,9 @@
 # Live Deployment 
 #### The project is deployed at following link:  [https://dainty-monstera-c047d8.netlify.app/](https://dainty-monstera-c047d8.netlify.app/)
 
+# Codesandbox
+#### Codesandbox link: [https://codesandbox.io/p/github/shriramcai/meetingRoomBooking/main?embed=1](https://codesandbox.io/p/github/shriramcai/meetingRoomBooking/main?embed=1)
+
 
 ## Development server
  - Clone the repository
