@@ -1,0 +1,17 @@
+.header {
+  height: 60px;
+  width: 100%;
+  background: lightgray;
+  margin-bottom: 50px;
+}
+.logout {
+  float: right;
+  margin-right: 20px;
+  cursor: pointer;
+  color: #856e2b;
+}
+.user {
+  float: right;
+  margin-right: 20px;
+  color: #856e2b;
+}
