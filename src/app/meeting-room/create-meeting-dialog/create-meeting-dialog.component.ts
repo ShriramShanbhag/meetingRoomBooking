@@ -46,6 +46,13 @@ export class CreateMeetingDialogComponent {
       return;
     }
 
+    // Check if selected date is weekend
+    const selectedDay = fromDatetime.getDay();
+    if (selectedDay === 6 || selectedDay === 7) {
+      alert("Meetings cannot be booked on Weekends");
+      return;
+    }
+
     // Validate time range
     if (
       !this.createMeetingService.isTimeValid(fromDatetime) ||
