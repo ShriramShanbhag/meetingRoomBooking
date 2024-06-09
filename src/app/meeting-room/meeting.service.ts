@@ -7,12 +7,14 @@ import {
   MeetingRoom,
   MeetingRoomStatus,
 } from "../models/meeting.models";
+import { roomsAPIUrl } from "../constants";
 
 @Injectable({
   providedIn: "root",
 })
 export class MeetingService {
-  private roomsAPIUrl = "http://localhost:3000/meetingRooms";
+  // private roomsAPIUrl = "http://localhost:3000/meetingRooms";
+  private roomsAPIUrl = roomsAPIUrl;
 
   constructor(private http: HttpClient) {}
 
