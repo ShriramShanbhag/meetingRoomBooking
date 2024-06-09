@@ -5,7 +5,12 @@
   <app-create-meeting-dialog
     *ngIf="showMeetingDialog"
     (close)="closeMeetingDialog()"
+    (updatedmeetings)="handleMeetingsUpdated()"
   ></app-create-meeting-dialog>
-  <app-upcoming-meetings></app-upcoming-meetings>
-  <app-meeting-room-details></app-meeting-room-details>
+  <app-upcoming-meetings
+    [upcomingMeetings]="upcomingMeetingsForUser"
+  ></app-upcoming-meetings>
+  <app-meeting-room-details
+    [upcomingMeetings]="upcomingMeetings"
+  ></app-meeting-room-details>
 </div>
