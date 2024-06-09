@@ -4,15 +4,6 @@
     <div>
       <h3>Check Meeting Room Status</h3>
       <form (ngSubmit)="onSearch()">
-        <div class="form-group">
-          <label for="username">User Name</label>
-          <input
-            id="username"
-            name="username"
-            [(ngModel)]="userName"
-            required
-          />
-        </div>
         <div class="date-time-section">
           <div class="form-group">
             <label for="meeting-date">Meeting Date</label>
@@ -45,13 +36,8 @@
             />
           </div>
         </div>
-        <div>
-          <p class="error">
-            ****time should be between 09:00AM and 06:00PM, Meeting should be of
-            atleast 30 minutes
-          </p>
-        </div>
-        <button type="submit">Search Rooms</button>
+        <br />
+        <button type="submit">Show Status</button>
       </form>
 
       <div *ngFor="let room of roomsWithStatus">
