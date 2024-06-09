@@ -18,3 +18,9 @@ td {
 th {
   background-color: #f2f2f2;
 }
+
+.delete {
+  color: red;
+  cursor: pointer;
+  display: inline;
+}

@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { DatePipe, NgFor } from "@angular/common";
 import { MeetingService } from "../meeting.service";
 import { Meeting } from "../../models/meeting.models";
@@ -13,4 +13,14 @@ import { Meeting } from "../../models/meeting.models";
 export class UpcomingMeetingsComponent {
   constructor(private meetingService: MeetingService) {}
   @Input() upcomingMeetings: Array<Meeting> = [];
+  @Output() updateMeetings = new EventEmitter<void>();
+
+  deleteMeeting(meeting: Meeting) {
+    if (confirm("Are you sure you want to delete?"))
+      this.meetingService
+        .deleteMeeting(meeting.roomid, meeting.id)
+        .subscribe(() => {
+          this.updateMeetings.emit();
+        });
+  }
 }

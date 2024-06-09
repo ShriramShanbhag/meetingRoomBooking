@@ -18,6 +18,7 @@
   ></app-check-status-dialog>
   <app-upcoming-meetings
     [upcomingMeetings]="upcomingMeetingsForUser"
+    (updateMeetings)="handleMeetingsUpdated()"
   ></app-upcoming-meetings>
   <app-meeting-room-details
     [upcomingMeetings]="upcomingMeetings"

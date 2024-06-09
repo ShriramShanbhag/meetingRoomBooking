@@ -18,7 +18,10 @@
         <td>{{ meeting.agenda }}</td>
         <td>{{ meeting.fromDatetime | date : "dd-MM-YYYY" }}</td>
         <td>{{ meeting.fromDatetime | date : "HH:mm" }}</td>
-        <td>{{ meeting.roomid }}</td>
+        <td>
+          {{ meeting.roomid }}
+          <p class="delete" (click)="deleteMeeting(meeting)">Delete</p>
+        </td>
       </tr>
     </tbody>
   </table>
