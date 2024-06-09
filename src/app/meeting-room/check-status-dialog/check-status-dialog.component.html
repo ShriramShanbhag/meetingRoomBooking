@@ -1,0 +1,74 @@
+<div class="popup-background">
+  <div class="popup-content">
+    <span class="close" (click)="closePopup()">&times;</span>
+    <div>
+      <h3>Check Meeting Room Status</h3>
+      <form (ngSubmit)="onSearch()">
+        <div class="form-group">
+          <label for="username">User Name</label>
+          <input
+            id="username"
+            name="username"
+            [(ngModel)]="userName"
+            required
+          />
+        </div>
+        <div class="date-time-section">
+          <div class="form-group">
+            <label for="meeting-date">Meeting Date</label>
+            <input
+              id="meeting-date"
+              name="meetingDate"
+              type="date"
+              [(ngModel)]="meetingDate"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="start-time">Start Time</label>
+            <input
+              id="start-time"
+              name="startTime"
+              type="time"
+              [(ngModel)]="startTime"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="end-time">End Time</label>
+            <input
+              id="end-time"
+              name="endTime"
+              type="time"
+              [(ngModel)]="endTime"
+              required
+            />
+          </div>
+        </div>
+        <div>
+          <p class="error">
+            ****time should be between 09:00AM and 06:00PM, Meeting should be of
+            atleast 30 minutes
+          </p>
+        </div>
+        <button type="submit">Search Rooms</button>
+      </form>
+
+      <div *ngFor="let room of roomsWithStatus">
+        <div [ngClass]="getStatusClass(room)">
+          <p>Meeting Room #{{ room.id }} - {{ getStatus(room) }}</p>
+          <div *ngIf="getBookings(room).length > 0">
+            <h4>Bookings:</h4>
+            <ul>
+              <li *ngFor="let booking of getBookings(room)">
+                {{ booking.userName }}:
+                {{ booking.fromDatetime | date : "hh:mm" }} -
+                {{ booking.toDatetime | date : "hh:mm" }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
