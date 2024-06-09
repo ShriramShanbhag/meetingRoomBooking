@@ -18,4 +18,15 @@ export class CreateMeetingService {
     const duration = (endTime.getTime() - startTime.getTime()) / (1000 * 60); // Duration in minutes
     return duration >= 30;
   }
+
+  isStartTimeLessThanEndTime(startTime: Date, endTime: Date): boolean {
+    return endTime.getTime() > startTime.getTime();
+  }
+
+  isBookingInPast(startTime: Date, endTime: Date): boolean {
+    const now = new Date();
+    if (startTime < now) {
+      return true;
+    } else return false;
+  }
 }

@@ -1,4 +1,4 @@
-import { NgFor } from "@angular/common";
+import { NgFor, NgIf } from "@angular/common";
 import { Component, EventEmitter, Output } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { MeetingService } from "../meeting.service";
@@ -8,7 +8,7 @@ import { CreateMeetingService } from "./create-meeting.service";
 @Component({
   selector: "app-create-meeting-dialog",
   standalone: true,
-  imports: [FormsModule, NgFor],
+  imports: [FormsModule, NgFor, NgIf],
   templateUrl: "./create-meeting-dialog.component.html",
   styleUrl: "./create-meeting-dialog.component.css",
 })
@@ -17,7 +17,7 @@ export class CreateMeetingDialogComponent {
   @Output() updatedmeetings = new EventEmitter<void>();
   meetingRooms: MeetingRoom[] = [];
   meetingRoomIds: Number[] = [];
-  isDiaplayError: boolean = false;
+  isDisplayRoomAgenda: boolean = false;
 
   constructor(
     private meetingService: MeetingService,
@@ -29,6 +29,57 @@ export class CreateMeetingDialogComponent {
       this.meetingRooms = rooms;
       this.meetingRoomIds = rooms.map((r) => r.id);
     });
+  }
+
+  showAvailableRooms() {
+    let fromDatetime = this.createMeetingService.combineDateAndTime(
+      this.meetingDate,
+      this.startTime
+    );
+    let toDatetime = this.createMeetingService.combineDateAndTime(
+      this.meetingDate,
+      this.endTime
+    );
+
+    if (this.createMeetingService.isBookingInPast(fromDatetime, toDatetime)) {
+      alert("Cannot book for the past");
+      return;
+    }
+
+    // Validate time range
+    if (
+      !this.createMeetingService.isTimeValid(fromDatetime) ||
+      !this.createMeetingService.isTimeValid(toDatetime)
+    ) {
+      alert("Meeting times must be between 09:00 AM and 06:00 PM");
+      return;
+    }
+
+    // Validate duration
+    if (!this.createMeetingService.isDurationValid(fromDatetime, toDatetime)) {
+      alert("Meeting duration must be at least 30 minutes");
+      return;
+    }
+
+    if (
+      !this.createMeetingService.isStartTimeLessThanEndTime(
+        fromDatetime,
+        toDatetime
+      )
+    ) {
+      alert("Start time cannot be greater than end time");
+      return;
+    }
+
+    this.meetingRoomIds = this.meetingService
+      .checkAvailability(this.meetingRooms, fromDatetime, toDatetime)
+      .filter((r) => r.status === "Available")
+      .map((u) => u.id);
+    this.isDisplayRoomAgenda = true;
+  }
+
+  hideAvailableRooms() {
+    this.isDisplayRoomAgenda = false;
   }
 
   closePopup() {
@@ -43,6 +94,19 @@ export class CreateMeetingDialogComponent {
   agenda: string = "";
 
   onSubmit() {
+    if (!this.userName) {
+      alert("Username missing");
+      return;
+    }
+    if (!this.meetingRoom) {
+      alert("Select a meeting room");
+      return;
+    }
+    if (!this.agenda) {
+      alert("agenda cannot be empty");
+      return;
+    }
+
     let fromDatetime = this.createMeetingService.combineDateAndTime(
       this.meetingDate,
       this.startTime
@@ -51,18 +115,14 @@ export class CreateMeetingDialogComponent {
       this.meetingDate,
       this.endTime
     );
-    // Validate time range
-    if (
-      !this.createMeetingService.isTimeValid(fromDatetime) ||
-      !this.createMeetingService.isTimeValid(toDatetime)
-    ) {
-      alert("Meeting times must be between 09:00 AM and 06:00 PM");
-      return;
-    }
 
-    // Validate duration
-    if (!this.createMeetingService.isDurationValid(fromDatetime, toDatetime)) {
-      alert("Meeting duration must be at least 30 minutes");
+    if (
+      !this.createMeetingService.isStartTimeLessThanEndTime(
+        fromDatetime,
+        toDatetime
+      )
+    ) {
+      alert("Start time cannot be greater than end time");
       return;
     }
     let meeting: Meeting = {

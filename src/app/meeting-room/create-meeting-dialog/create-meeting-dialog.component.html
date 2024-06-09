@@ -21,6 +21,7 @@
               name="meetingDate"
               type="date"
               [(ngModel)]="meetingDate"
+              (change)="hideAvailableRooms()"
               required
             />
           </div>
@@ -32,6 +33,7 @@
               type="time"
               [(ngModel)]="startTime"
               required
+              (change)="hideAvailableRooms()"
             />
           </div>
           <div class="form-group">
@@ -41,6 +43,7 @@
               name="endTime"
               type="time"
               [(ngModel)]="endTime"
+              (change)="hideAvailableRooms()"
               required
             />
           </div>
@@ -51,27 +54,36 @@
             atleast 30 minutes
           </p>
         </div>
-        <div class="form-group">
-          <label for="meeting-room">Meeting Room</label>
-          <select
-            id="meeting-room"
-            name="meetingRoom"
-            [(ngModel)]="meetingRoom"
-            required
-            aria-placeholder="Select Meeting Room"
-          >
-            <option value="" disabled selected>Select your option</option>
-            <option *ngFor="let id of meetingRoomIds" [value]="id">
-              {{ id }}
-            </option>
-          </select>
-        </div>
+        <button
+          *ngIf="!isDisplayRoomAgenda"
+          type="button"
+          (click)="showAvailableRooms()"
+        >
+          Show Rooms
+        </button>
+        <div *ngIf="isDisplayRoomAgenda">
+          <div class="form-group">
+            <label for="meeting-room">Meeting Room</label>
+            <select
+              id="meeting-room"
+              name="meetingRoom"
+              [(ngModel)]="meetingRoom"
+              required
+              aria-placeholder="Select Meeting Room"
+            >
+              <option value="" disabled selected>Select your option</option>
+              <option *ngFor="let id of meetingRoomIds" [value]="id">
+                {{ id }}
+              </option>
+            </select>
+          </div>
 
-        <div class="form-group">
-          <label for="agenda">Agenda</label>
-          <textarea id="agenda" name="agenda" [(ngModel)]="agenda"></textarea>
+          <div class="form-group">
+            <label for="agenda">Agenda</label>
+            <textarea id="agenda" name="agenda" [(ngModel)]="agenda"></textarea>
+          </div>
+          <button type="submit">Book Meeting</button>
         </div>
-        <button type="submit">Book Meeting</button>
       </form>
     </div>
   </div>
