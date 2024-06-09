@@ -40,11 +40,14 @@ export class MeetingRoomComponent {
   };
 
   handleMeetingsUpdated() {
+    let now = new Date();
     this.meetingService.getMeetings().subscribe((meetings) => {
-      this.upcomingMeetings = meetings;
-      this.upcomingMeetingsForUser = meetings.filter(
-        (m) => m.userName === localStorage.getItem("userName")
+      this.upcomingMeetings = meetings.filter(
+        (m) => new Date(m.fromDatetime) >= now
       );
+      this.upcomingMeetingsForUser = meetings
+        .filter((m) => m.userName === localStorage.getItem("userName"))
+        .filter((me) => new Date(me.fromDatetime) >= now);
     });
   }
 
