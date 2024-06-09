@@ -1,0 +1,160 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "userName": "user",
+      "password": "Password123"
+    },
+    {
+      "id": "2",
+      "userName": "admin",
+      "password": "Password123"
+    }
+  ],
+  "meetingRooms": [
+    {
+      "id": "1",
+      "bookings": [
+        {
+          "id": 1,
+          "userName": "user",
+          "agenda": "Project Discussion",
+          "fromDatetime": "2024-06-08T09:00:00.000Z",
+          "toDatetime": "2024-06-08T09:00:00.000Z",
+          "roomid": "1"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "bookings": [
+        {
+          "userName": "user",
+          "agenda": "none",
+          "roomid": "2",
+          "fromDatetime": "2024-06-09T07:31:00.000Z",
+          "toDatetime": "2024-06-09T08:10:00.000Z",
+          "id": 1717921923816
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "bookings": [
+        {
+          "userName": "admin",
+          "agenda": "none",
+          "roomid": "3",
+          "fromDatetime": "2024-06-09T10:30:00.000Z",
+          "toDatetime": "2024-06-09T11:00:00.000Z",
+          "id": 1717921865319
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "bookings": [
+        {
+          "id": 1,
+          "userName": "user",
+          "agenda": "Project Discussion",
+          "fromDatetime": "2024-06-08T09:00:00.000Z",
+          "toDatetime": "2024-06-08T09:00:00.000Z",
+          "roomid": "1"
+        },
+        {
+          "userName": "user",
+          "agenda": "wdff",
+          "roomid": "4",
+          "fromDatetime": "2024-06-09T07:45:00.000Z",
+          "toDatetime": "2024-06-09T08:45:00.000Z",
+          "id": 1717919141670
+        },
+        {
+          "userName": "admin",
+          "agenda": "jbjkb",
+          "roomid": "4",
+          "fromDatetime": "2024-06-09T08:00:00.000Z",
+          "toDatetime": "2024-06-09T09:00:00.000Z",
+          "id": 1717920356571
+        },
+        {
+          "userName": "admin",
+          "agenda": "hello",
+          "roomid": "4",
+          "fromDatetime": "2024-06-10T08:36:00.000Z",
+          "toDatetime": "2024-06-10T09:21:00.000Z",
+          "id": 1717922190319
+        },
+        {
+          "userName": "user",
+          "agenda": "hbvkh",
+          "roomid": "4",
+          "fromDatetime": "2024-06-09T08:41:00.000Z",
+          "toDatetime": "2024-06-09T09:57:00.000Z",
+          "id": 1717922505505
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "bookings": [
+        {
+          "userName": "admin",
+          "agenda": "juhiug",
+          "roomid": "5",
+          "fromDatetime": "2024-06-09T08:40:00.000Z",
+          "toDatetime": "2024-06-09T09:29:00.000Z",
+          "id": 1717922450728
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "bookings": []
+    },
+    {
+      "id": "7",
+      "bookings": [
+        {
+          "id": 1,
+          "userName": "user",
+          "agenda": "Project Discussion",
+          "fromDatetime": "2024-06-08T09:00:00.000Z",
+          "toDatetime": "2024-06-08T09:00:00.000Z",
+          "roomid": "1"
+        },
+        {
+          "userName": "user",
+          "agenda": "Lucky",
+          "roomid": "7",
+          "fromDatetime": "2024-06-09T08:33:00.000Z",
+          "toDatetime": "2024-06-09T09:25:00.000Z",
+          "id": 1717921998848
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "bookings": []
+    },
+    {
+      "id": "9",
+      "bookings": []
+    },
+    {
+      "id": "10",
+      "bookings": []
+    }
+  ],
+  "meetings": [
+    {
+      "id": 1,
+      "userName": "user",
+      "agenda": "Project Discussion",
+      "fromDatetime": "2024-06-08T09:00:00.000Z",
+      "toDatetime": "2024-06-08T09:00:00.000Z",
+      "roomid": "1"
+    }
+  ]
+}
