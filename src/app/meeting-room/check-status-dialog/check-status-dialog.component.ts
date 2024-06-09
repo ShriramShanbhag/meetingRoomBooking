@@ -49,6 +49,16 @@ export class CheckStatusDialogComponent {
       this.endTime
     );
 
+    if (
+      !this.createMeetingService.isStartTimeLessThanEndTime(
+        fromDatetime,
+        toDatetime
+      )
+    ) {
+      alert("Start time cannot be greater than end time");
+      return;
+    }
+
     this.roomsWithStatus = this.meetingService.checkAvailability(
       this.meetingRooms,
       fromDatetime,
