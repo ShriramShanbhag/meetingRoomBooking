@@ -1,6 +1,7 @@
-import { Component } from "@angular/core";
-import { Meeting } from "../../models/meeting.models";
+import { Component, Input } from "@angular/core";
 import { DatePipe, NgFor } from "@angular/common";
+import { MeetingService } from "../meeting.service";
+import { Meeting } from "../../models/meeting.models";
 
 @Component({
   selector: "app-upcoming-meetings",
@@ -10,12 +11,6 @@ import { DatePipe, NgFor } from "@angular/common";
   styleUrl: "./upcoming-meetings.component.css",
 })
 export class UpcomingMeetingsComponent {
-  upcomingMeetings: Array<Meeting> = [
-    {
-      userName: "demo",
-      agenda: "demo",
-      datetime: new Date(),
-      roomid: "1",
-    },
-  ];
+  constructor(private meetingService: MeetingService) {}
+  @Input() upcomingMeetings: Array<Meeting> = [];
 }

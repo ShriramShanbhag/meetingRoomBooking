@@ -1,8 +1,9 @@
 <div class="meeting-room-details-box">
   <h2>Meeting Room Details</h2>
   <p>Select Meeting Room</p>
-  <select>
-    <option *ngFor="let id of meetingRoomIds; index as i">
+  <select (change)="onSelectionChange($event)">
+    <option value="" disabled selected>Select your option</option>
+    <option *ngFor="let id of meetingRoomIds; index as i" [value]="id">
       Meeting Room # {{ id }}
     </option>
   </select>
@@ -18,7 +19,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let meeting of upcomingMeetings; index as i">
+      <tr *ngFor="let meeting of upcomingMeetingsByRoom; index as i">
         <td>{{ i + 1 }}</td>
         <td>{{ meeting.userName }}</td>
         <td>{{ meeting.agenda }}</td>
