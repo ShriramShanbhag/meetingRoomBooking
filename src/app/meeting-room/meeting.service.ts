@@ -72,7 +72,10 @@ export class MeetingService {
     );
   }
 
-  deleteMeeting(roomId: number, meetingId: number): Observable<void> {
+  deleteMeeting(
+    roomId: number,
+    meetingId: number | undefined
+  ): Observable<void> {
     return this.http.get<MeetingRoom>(`${this.roomsAPIUrl}/${roomId}`).pipe(
       map((room) => {
         const index = room.bookings.findIndex(
