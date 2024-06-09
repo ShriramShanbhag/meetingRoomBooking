@@ -18,6 +18,7 @@ export class AuthService {
         );
         if (user) {
           localStorage.setItem("isLoggedIn", "true");
+          localStorage.setItem("userName", user.userName);
           return true;
         } else return false;
       })
@@ -30,6 +31,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("userName");
   }
 
   isLoggedIn(): boolean {
