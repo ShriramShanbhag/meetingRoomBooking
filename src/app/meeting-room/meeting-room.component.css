@@ -12,3 +12,8 @@
   padding: 10px;
   cursor: pointer;
 }
+
+.button-container {
+  display: flex;
+  gap: 20px;
+}

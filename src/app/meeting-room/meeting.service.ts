@@ -2,7 +2,11 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
-import { Meeting, MeetingRoom } from "../models/meeting.models";
+import {
+  Meeting,
+  MeetingRoom,
+  MeetingRoomStatus,
+} from "../models/meeting.models";
 
 @Injectable({
   providedIn: "root",
@@ -103,6 +107,35 @@ export class MeetingService {
         return room.bookings || [];
       })
     );
+  }
+
+  checkAvailability(
+    rooms: MeetingRoom[],
+    fromDatetime: Date,
+    toDatetime: Date
+  ): MeetingRoomStatus[] {
+    return rooms.map((room) => {
+      let status = "Available";
+      let bookingsInRange = [];
+
+      for (const booking of room.bookings) {
+        const bookingStart = new Date(booking.fromDatetime);
+        const bookingEnd = new Date(booking.toDatetime);
+
+        if (bookingStart < toDatetime && bookingEnd > fromDatetime) {
+          bookingsInRange.push(booking);
+
+          if (bookingStart <= fromDatetime && bookingEnd >= toDatetime) {
+            status = "Booked";
+            break;
+          } else {
+            status = "In Use";
+          }
+        }
+      }
+
+      return { ...room, status, bookingsInRange };
+    });
   }
 
   getMeetingRooms(): Observable<MeetingRoom[]> {

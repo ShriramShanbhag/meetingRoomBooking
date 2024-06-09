@@ -11,3 +11,8 @@ export interface MeetingRoom {
   id: number;
   bookings: Array<Meeting>;
 }
+
+export interface MeetingRoomStatus extends MeetingRoom {
+  status: string;
+  bookingsInRange: Array<Meeting>;
+}

@@ -1,12 +1,21 @@
 <div class="container">
-  <button class="book-meeting-button" (click)="openMeetingDialog()">
-    Book Meeting
-  </button>
+  <div class="button-container">
+    <button class="book-meeting-button" (click)="openMeetingDialog()">
+      Book Meeting
+    </button>
+    <button class="book-meeting-button" (click)="openStatusDialog()">
+      Show Room Status
+    </button>
+  </div>
   <app-create-meeting-dialog
     *ngIf="showMeetingDialog"
     (close)="closeMeetingDialog()"
     (updatedmeetings)="handleMeetingsUpdated()"
   ></app-create-meeting-dialog>
+  <app-check-status-dialog
+    *ngIf="showStatusDialog"
+    (close)="closeStatusDialog()"
+  ></app-check-status-dialog>
   <app-upcoming-meetings
     [upcomingMeetings]="upcomingMeetingsForUser"
   ></app-upcoming-meetings>

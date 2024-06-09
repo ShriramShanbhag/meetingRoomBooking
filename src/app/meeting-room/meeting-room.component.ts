@@ -5,6 +5,7 @@ import { CreateMeetingDialogComponent } from "./create-meeting-dialog/create-mee
 import { NgIf } from "@angular/common";
 import { MeetingService } from "./meeting.service";
 import { Meeting } from "../models/meeting.models";
+import { CheckStatusDialogComponent } from "./check-status-dialog/check-status-dialog.component";
 
 @Component({
   selector: "app-meeting-room",
@@ -13,6 +14,7 @@ import { Meeting } from "../models/meeting.models";
     UpcomingMeetingsComponent,
     MeetingRoomDetailsComponent,
     CreateMeetingDialogComponent,
+    CheckStatusDialogComponent,
     NgIf,
   ],
   templateUrl: "./meeting-room.component.html",
@@ -22,6 +24,7 @@ export class MeetingRoomComponent {
   constructor(private meetingService: MeetingService) {}
 
   showMeetingDialog = false;
+  showStatusDialog = false;
   upcomingMeetings: Meeting[] = [];
   upcomingMeetingsForUser: Meeting[] = [];
 
@@ -31,6 +34,9 @@ export class MeetingRoomComponent {
 
   openMeetingDialog = () => {
     this.showMeetingDialog = true;
+  };
+  openStatusDialog = () => {
+    this.showStatusDialog = true;
   };
 
   handleMeetingsUpdated() {
@@ -44,5 +50,9 @@ export class MeetingRoomComponent {
 
   closeMeetingDialog = () => {
     this.showMeetingDialog = false;
+  };
+
+  closeStatusDialog = () => {
+    this.showStatusDialog = false;
   };
 }
