@@ -1,6 +1,12 @@
 export interface Meeting {
   userName: String;
   agenda: String;
-  datetime: Date;
+  fromDatetime: Date;
+  toDatetime: Date;
   roomid: String;
+}
+
+export interface MeetingRoom {
+  id: Number;
+  bookings: Array<Meeting>;
 }
