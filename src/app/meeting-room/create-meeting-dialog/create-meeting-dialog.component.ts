@@ -48,7 +48,7 @@ export class CreateMeetingDialogComponent {
 
     // Check if selected date is weekend
     const selectedDay = fromDatetime.getDay();
-    if (selectedDay === 6 || selectedDay === 7) {
+    if (selectedDay === 0 || selectedDay === 6) {
       alert("Meetings cannot be booked on Weekends");
       return;
     }
