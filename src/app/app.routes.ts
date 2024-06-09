@@ -6,10 +6,11 @@ import { MeetingRoomComponent } from "./meeting-room/meeting-room.component";
 import { authGuard } from "./auth/auth.guard";
 
 export const routes: Routes = [
-  { path: "login", component: LoginComponent },
+  { path: "login", component: LoginComponent, pathMatch: "full" },
   {
     path: "meetings",
     component: MeetingRoomComponent,
     canActivate: [authGuard],
   },
+  { path: "**", redirectTo: "/login" },
 ];
